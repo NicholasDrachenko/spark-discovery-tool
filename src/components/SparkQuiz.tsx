@@ -118,49 +118,18 @@ export const SparkQuiz = () => {
             Your Spark Journey Complete!
           </h1>
           
-          <p className="text-xl text-primary-foreground/90 mb-8 leading-relaxed max-w-2xl mx-auto">
+          <p className="text-xl text-primary-foreground/90 mb-12 leading-relaxed max-w-2xl mx-auto">
             Congratulations! You've explored 15 unique perspectives about your work style and discovered insights that can guide your career path.
           </p>
           
-          <Card className="p-8 mb-8 shadow-spark max-w-2xl mx-auto text-left">
-            <h3 className="text-2xl font-bold text-foreground mb-4 text-center">
-              🎯 Your Insights Summary
+          <Card className="p-8 shadow-glow gradient-spark max-w-2xl mx-auto animate-pulse-glow">
+            <h3 className="text-3xl font-bold text-primary-foreground mb-2">
+              ✨ Let's See Those Results! ✨
             </h3>
-            <p className="text-muted-foreground mb-4">
-              Based on your responses, you've revealed patterns in how you:
+            <p className="text-primary-foreground/90 text-lg">
+              Your personalized career insights are ready
             </p>
-            <ul className="space-y-2 text-muted-foreground">
-              <li>• Approach projects and problem-solving</li>
-              <li>• Find energy and motivation in work</li>
-              <li>• Collaborate and communicate with others</li>
-              <li>• Handle challenges and take risks</li>
-              <li>• Define success and fulfillment</li>
-            </ul>
           </Card>
-          
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button 
-              variant="spark"
-              size="xl"
-              onClick={restartQuiz}
-              className="shadow-spark"
-            >
-              <RotateCcw className="h-5 w-5" />
-              Take Quiz Again
-            </Button>
-            
-            <Button 
-              variant="secondary"
-              size="xl"
-              onClick={() => window.location.reload()}
-            >
-              Share Your Results
-            </Button>
-          </div>
-          
-          <p className="text-sm text-primary-foreground/60 mt-8">
-            Remember: Your spark is unique. Use these insights as a compass, not a cage.
-          </p>
         </div>
       </div>
     );
