@@ -122,11 +122,11 @@ export const SparkQuiz = () => {
             Congratulations! You've explored 15 unique perspectives about your work style and discovered insights that can guide your career path.
           </p>
           
-          <Card className="p-8 shadow-pink-glow gradient-pink max-w-2xl mx-auto animate-pink-glow">
-            <h3 className="text-3xl font-bold text-pink-foreground mb-2">
+          <Card className="p-8 shadow-glow gradient-spark max-w-2xl mx-auto animate-pulse-glow">
+            <h3 className="text-3xl font-bold text-primary-foreground mb-2">
               ✨ Let's See Those Results! ✨
             </h3>
-            <p className="text-pink-foreground/90 text-lg">
+            <p className="text-primary-foreground/90 text-lg">
               Your personalized career insights are ready
             </p>
           </Card>
