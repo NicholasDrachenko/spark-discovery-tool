@@ -117,12 +117,11 @@ export const QuizQuestionComponent = ({
 
       {/* Next Button */}
       {localSelected !== undefined && (
-        <div className="flex justify-center">
+        <div className="flex justify-center mt-12">
           <Button 
             variant="spark" 
             size="xl"
             onClick={onNext}
-            className="animate-bounce"
           >
             {questionNumber === totalQuestions ? 'Complete Quiz' : 'Next Question'}
             <ChevronRight className="h-5 w-5" />
