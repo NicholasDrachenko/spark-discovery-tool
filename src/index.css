@@ -23,6 +23,11 @@
     --secondary: 260 85% 65%;
     --secondary-foreground: 0 0% 100%;
 
+    /* Pink Results Colors */
+    --pink: 320 85% 70%;
+    --pink-foreground: 0 0% 100%;
+    --pink-glow: 330 90% 80%;
+
     --muted: 20 40% 94%;
     --muted-foreground: 240 10% 50%;
 
@@ -40,10 +45,12 @@
     --gradient-spark: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
     --gradient-secondary: linear-gradient(135deg, hsl(var(--secondary)), hsl(var(--accent)));
     --gradient-hero: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--secondary)) 50%, hsl(var(--accent)) 100%);
+    --gradient-pink: linear-gradient(135deg, hsl(var(--pink)), hsl(var(--pink-glow)));
     
     /* Shadows & Effects */
     --shadow-spark: 0 10px 40px -10px hsl(var(--primary) / 0.3);
     --shadow-glow: 0 0 60px hsl(var(--primary-glow) / 0.4);
+    --shadow-pink-glow: 0 0 80px hsl(var(--pink-glow) / 0.6);
     
     /* Animations */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -131,12 +138,20 @@
     background: var(--gradient-hero);
   }
   
+  .gradient-pink {
+    background: var(--gradient-pink);
+  }
+  
   .shadow-spark {
     box-shadow: var(--shadow-spark);
   }
   
   .shadow-glow {
     box-shadow: var(--shadow-glow);
+  }
+  
+  .shadow-pink-glow {
+    box-shadow: var(--shadow-pink-glow);
   }
   
   .transition-smooth {
@@ -163,5 +178,14 @@
   @keyframes pulse-glow {
     0%, 100% { box-shadow: var(--shadow-spark); }
     50% { box-shadow: var(--shadow-glow); }
+  }
+  
+  .animate-pink-glow {
+    animation: pink-glow 2s ease-in-out infinite;
+  }
+  
+  @keyframes pink-glow {
+    0%, 100% { box-shadow: var(--shadow-pink-glow); }
+    50% { box-shadow: 0 0 120px hsl(var(--pink-glow) / 0.8); }
   }
 }
