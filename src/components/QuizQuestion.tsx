@@ -99,25 +99,27 @@ export const QuizQuestionComponent = ({
       </div>
 
       {/* Feedback */}
-      {showFeedback && selectedOptionData && (
-        <Card className="mb-8 p-6 gradient-secondary animate-float">
-          <div className="flex items-start gap-4">
-            <Sparkles className="h-6 w-6 text-secondary-foreground mt-1 animate-spin" />
-            <div>
-              <h3 className="text-lg font-semibold text-secondary-foreground mb-2">
-                Your Spark Insight
-              </h3>
-              <p className="text-secondary-foreground leading-relaxed">
-                {selectedOptionData.feedback}
-              </p>
+      <div className="mb-8 min-h-[120px]">
+        {showFeedback && selectedOptionData && (
+          <Card className="p-6 gradient-secondary animate-float">
+            <div className="flex items-start gap-4">
+              <Sparkles className="h-6 w-6 text-secondary-foreground mt-1 animate-spin" />
+              <div>
+                <h3 className="text-lg font-semibold text-secondary-foreground mb-2">
+                  Your Spark Insight
+                </h3>
+                <p className="text-secondary-foreground leading-relaxed">
+                  {selectedOptionData.feedback}
+                </p>
+              </div>
             </div>
-          </div>
-        </Card>
-      )}
+          </Card>
+        )}
+      </div>
 
       {/* Next Button */}
       {localSelected !== undefined && (
-        <div className="flex justify-center mt-12">
+        <div className="flex justify-center">
           <Button 
             variant="spark" 
             size="xl"
