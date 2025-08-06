@@ -71,19 +71,19 @@ const Results = () => {
         {
           title: "Project Manager",
           description: "Lead teams and organize complex projects from start to finish",
-          skills: ["Planning", "Leadership", "Communication", "Problem-solving"],
+          skills: ["Planning", "Leadership", "Communication", "Problem-solving", "Risk Management"],
           insight: "Organization is your superpower — the future loves planners like you."
         },
         {
           title: "Operations Analyst",
           description: "Optimize business processes and improve operational efficiency",
-          skills: ["Data Analysis", "Process Improvement", "Strategic Thinking"],
+          skills: ["Data Analysis", "Process Improvement", "Strategic Thinking", "Excel/SQL", "Project Management"],
           insight: "You're wired for puzzle-solving. Obstacles are your invitation."
         },
         {
           title: "UX Designer",
           description: "Design user-friendly interfaces and improve user experiences",
-          skills: ["Design Thinking", "User Research", "Prototyping"],
+          skills: ["Design Thinking", "User Research", "Prototyping", "Figma/Sketch", "Information Architecture"],
           insight: "That's big innovative thinking — not all imagination leaps."
         }
       ],
@@ -91,19 +91,19 @@ const Results = () => {
         {
           title: "Creative Director",
           description: "Lead creative teams and develop innovative brand strategies",
-          skills: ["Creative Vision", "Brand Strategy", "Team Leadership"],
+          skills: ["Creative Vision", "Brand Strategy", "Team Leadership", "Adobe Creative Suite", "Marketing"],
           insight: "You build things that matter. That's rare and powerful."
         },
         {
           title: "Product Designer",
           description: "Design and develop new products that solve real problems",
-          skills: ["Product Development", "Design Thinking", "Innovation"],
+          skills: ["Product Development", "Design Thinking", "Innovation", "User Testing", "Wireframing"],
           insight: "Purpose drives you — and purpose doesn't feel it."
         },
         {
           title: "Content Creator",
           description: "Create engaging content across various digital platforms",
-          skills: ["Storytelling", "Visual Design", "Social Media"],
+          skills: ["Storytelling", "Visual Design", "Social Media", "Video Editing", "SEO/Analytics"],
           insight: "You thrive in your inner world — that's where breakthroughs begin."
         }
       ],
@@ -111,19 +111,19 @@ const Results = () => {
         {
           title: "Team Coach",
           description: "Help teams improve performance and achieve their goals",
-          skills: ["Coaching", "Team Building", "Communication"],
+          skills: ["Coaching", "Team Building", "Communication", "Emotional Intelligence", "Performance Management"],
           insight: "Your energy lifts the room. That's leadership in motion."
         },
         {
           title: "Community Manager",
           description: "Build and nurture online and offline communities",
-          skills: ["Community Building", "Social Media", "Relationship Building"],
+          skills: ["Community Building", "Social Media", "Relationship Building", "Event Planning", "Content Strategy"],
           insight: "You understand that great work doesn't happen in a vacuum."
         },
         {
           title: "Facilitator",
           description: "Guide groups through processes and help them reach decisions",
-          skills: ["Group Facilitation", "Active Listening", "Conflict Resolution"],
+          skills: ["Group Facilitation", "Active Listening", "Conflict Resolution", "Workshop Design", "Change Management"],
           insight: "You're a bridge — and that's a rare gift."
         }
       ]
@@ -131,16 +131,24 @@ const Results = () => {
 
     // Return top recommendations with match percentages
     const topRecommendations: CareerRecommendation[] = [];
+    const totalScore = Object.values(categoryScores).reduce((sum, score) => sum + score, 0);
     
     sortedCategories.forEach(([category, score], index) => {
       const careers = careersByCategory[category as keyof typeof careersByCategory];
-      const matchPercentage = Math.round((score / (answers.length * 2)) * 100);
+      const baseMatchPercentage = Math.round((score / totalScore) * 100);
       
-      careers.slice(0, index === 0 ? 3 : 2).forEach(career => {
+      careers.slice(0, index === 0 ? 3 : 2).forEach((career, careerIndex) => {
+        // Add some variation to make percentages more realistic
+        const variation = Math.floor(Math.random() * 10) - 5; // -5 to +5
+        const matchPercentage = Math.max(
+          Math.min(baseMatchPercentage - (careerIndex * 3) + variation, 98), 
+          75
+        );
+        
         topRecommendations.push({
           ...career,
           category,
-          match: Math.max(matchPercentage - (topRecommendations.length * 5), 70)
+          match: matchPercentage
         });
       });
     });
