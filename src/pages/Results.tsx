@@ -40,25 +40,90 @@ const Results = () => {
     // Based on the chart, categorize answers into Organizer, Creator, Connector
     const categoryScores = { Organizer: 0, Creator: 0, Connector: 0 };
     
-    // Sample analysis logic based on the chart patterns
+    // Detailed mapping based on the chart and quiz questions
     answers.forEach((answer) => {
-      // This is a simplified mapping - in reality you'd map each question/answer to categories
       const questionId = answer.questionId;
       const optionIndex = answer.optionIndex;
       
-      // Example mapping based on common patterns in the chart
-      if (questionId <= 5) {
-        if (optionIndex === 0) categoryScores.Organizer += 2;
-        else if (optionIndex === 1) categoryScores.Creator += 2;
-        else categoryScores.Connector += 2;
-      } else if (questionId <= 10) {
-        if (optionIndex === 0) categoryScores.Creator += 2;
-        else if (optionIndex === 1) categoryScores.Organizer += 2;
-        else categoryScores.Connector += 2;
-      } else {
-        if (optionIndex === 0) categoryScores.Connector += 2;
-        else if (optionIndex === 1) categoryScores.Organizer += 2;
-        else categoryScores.Creator += 2;
+      // Map each question to specific categories based on the nature of responses
+      switch (questionId) {
+        case 1: // How do you start a project?
+          if (optionIndex === 0) categoryScores.Organizer += 3; // checklist/timeline
+          else if (optionIndex === 1) categoryScores.Creator += 3; // sketch/explore
+          else categoryScores.Connector += 3; // talk to others
+          break;
+        case 2: // What's exciting in a job?
+          if (optionIndex === 0) categoryScores.Organizer += 2; // solving problems
+          else if (optionIndex === 1) categoryScores.Creator += 3; // creating meaningful
+          else categoryScores.Connector += 3; // being part of something bigger
+          break;
+        case 3: // Energy source
+          if (optionIndex === 0) categoryScores.Creator += 2; // alone with thoughts
+          else if (optionIndex === 1) categoryScores.Connector += 3; // around others
+          else categoryScores.Organizer += 2; // flow between
+          break;
+        case 4: // Vague idea handling
+          if (optionIndex === 0) categoryScores.Organizer += 3; // map it out
+          else if (optionIndex === 1) categoryScores.Creator += 3; // spin into unexpected
+          else categoryScores.Connector += 2; // ask questions
+          break;
+        case 5: // Productive environment
+          if (optionIndex === 0) categoryScores.Creator += 2; // quiet/calm
+          else if (optionIndex === 1) categoryScores.Creator += 2; // energetic/spontaneous
+          else categoryScores.Connector += 3; // supportive/mission-driven
+          break;
+        case 6: // New task approach
+          if (optionIndex === 0) categoryScores.Organizer += 3; // research first
+          else if (optionIndex === 1) categoryScores.Creator += 3; // experiment
+          else categoryScores.Connector += 2; // ask others
+          break;
+        case 7: // Personal phrase
+          if (optionIndex === 0) categoryScores.Organizer += 3; // organize chaos
+          else if (optionIndex === 1) categoryScores.Creator += 3; // dream outside lines
+          else categoryScores.Connector += 3; // connect dots
+          break;
+        case 8: // Creative blocks
+          if (optionIndex === 0) categoryScores.Organizer += 2; // break/reset
+          else if (optionIndex === 1) categoryScores.Creator += 3; // throw at wall
+          else categoryScores.Connector += 2; // talk to someone
+          break;
+        case 9: // Compliments received
+          if (optionIndex === 0) categoryScores.Organizer += 3; // focus/reliability
+          else if (optionIndex === 1) categoryScores.Creator += 3; // creativity/originality
+          else categoryScores.Connector += 3; // energy/encouragement
+          break;
+        case 10: // Building from scratch
+          if (optionIndex === 0) categoryScores.Organizer += 3; // perfecting systems
+          else if (optionIndex === 1) categoryScores.Creator += 2; // imagining evolution
+          else categoryScores.Connector += 3; // bringing people together
+          break;
+        case 11: // Risk relationship
+          if (optionIndex === 0) categoryScores.Organizer += 3; // calculate carefully
+          else if (optionIndex === 1) categoryScores.Creator += 3; // follow instinct
+          else categoryScores.Connector += 2; // trust people around
+          break;
+        case 12: // Enjoy doing
+          if (optionIndex === 0) categoryScores.Organizer += 3; // finishing what others started
+          else if (optionIndex === 1) categoryScores.Creator += 3; // starting something new
+          else categoryScores.Organizer += 2; // improving what's there
+          break;
+        case 13: // Feedback preference
+          if (optionIndex === 0) categoryScores.Organizer += 2; // direct/honest
+          else if (optionIndex === 1) categoryScores.Connector += 2; // encouraging/positive
+          else categoryScores.Creator += 2; // thoughtful/nuanced
+          break;
+        case 14: // World impact
+          if (optionIndex === 0) categoryScores.Organizer += 3; // helping run smoothly
+          else if (optionIndex === 1) categoryScores.Creator += 3; // inspiring new thinking
+          else categoryScores.Connector += 3; // bringing people closer
+          break;
+        case 15: // End of day feeling
+          if (optionIndex === 0) categoryScores.Organizer += 3; // proud of what got done
+          else if (optionIndex === 1) categoryScores.Creator += 2; // excited about next
+          else categoryScores.Connector += 3; // grateful for who shared with
+          break;
+        default:
+          break;
       }
     });
 
@@ -138,17 +203,23 @@ const Results = () => {
       const baseMatchPercentage = Math.round((score / totalScore) * 100);
       
       careers.slice(0, index === 0 ? 3 : 2).forEach((career, careerIndex) => {
-        // Add some variation to make percentages more realistic
-        const variation = Math.floor(Math.random() * 10) - 5; // -5 to +5
-        const matchPercentage = Math.max(
-          Math.min(baseMatchPercentage - (careerIndex * 3) + variation, 98), 
-          75
-        );
+        // Calculate more accurate percentages based on actual scores
+        let matchPercentage;
+        if (index === 0) {
+          // Top category gets highest percentages
+          matchPercentage = Math.max(baseMatchPercentage - (careerIndex * 5), 85);
+        } else if (index === 1) {
+          // Second category gets medium percentages  
+          matchPercentage = Math.max(baseMatchPercentage - (careerIndex * 7) - 10, 65);
+        } else {
+          // Third category gets lower percentages
+          matchPercentage = Math.max(baseMatchPercentage - (careerIndex * 8) - 20, 45);
+        }
         
         topRecommendations.push({
           ...career,
           category,
-          match: matchPercentage
+          match: Math.min(matchPercentage, 96) // Cap at 96%
         });
       });
     });

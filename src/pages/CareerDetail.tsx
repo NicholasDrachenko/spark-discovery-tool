@@ -1,9 +1,8 @@
-import { useLocation, useNavigate, useParams } from "react-router-dom";
-import { useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { ArrowLeft, Star, TrendingUp, Users, DollarSign, BookOpen, Lock } from "lucide-react";
+import { ArrowLeft, Star, BookOpen, Crown, Lock, Sparkles, MapPin, Clock, TrendingUp, Users, DollarSign } from "lucide-react";
 
 interface CareerRecommendation {
   title: string;
@@ -12,30 +11,26 @@ interface CareerRecommendation {
   description: string;
   skills: string[];
   insight: string;
+  freeResources: { title: string; description: string; }[];
+  premiumResources: { title: string; description: string; }[];
 }
 
 const CareerDetail = () => {
-  const { title } = useParams();
   const location = useLocation();
   const navigate = useNavigate();
   const career = location.state?.career as CareerRecommendation;
-  const [showPremiumModal, setShowPremiumModal] = useState(false);
 
   if (!career) {
     navigate("/");
     return null;
   }
 
-  const handlePremiumClick = () => {
-    setShowPremiumModal(true);
-  };
-
   return (
     <div className="min-h-screen bg-background">
       <div className="container mx-auto px-6 py-12">
         <Button 
           variant="ghost" 
-          onClick={() => navigate(-1)}
+          onClick={() => navigate("/results", { state: { answers: location.state?.answers } })}
           className="mb-8"
         >
           <ArrowLeft className="h-4 w-4 mr-2" />
@@ -89,176 +84,201 @@ const CareerDetail = () => {
             </Card>
           </div>
 
-          {/* Free Resources */}
-          <Card className="p-6 mb-8">
-            <h3 className="text-xl font-semibold mb-4 flex items-center gap-2">
-              <BookOpen className="h-5 w-5 text-primary" />
-              Free Resources to Get Started
-            </h3>
-            <div className="grid md:grid-cols-2 gap-4">
-              <div>
-                <h4 className="font-medium mb-2">📚 Books & Reading</h4>
-                <ul className="text-sm text-muted-foreground space-y-1">
-                  <li>• "The Lean Startup" by Eric Ries</li>
-                  <li>• "Design of Everyday Things" by Don Norman</li>
-                  <li>• Harvard Business Review articles</li>
-                </ul>
+          <div className="grid md:grid-cols-2 gap-8 mb-8">
+            {/* Free Resources */}
+            <Card className="p-6">
+              <div className="flex items-center gap-3 mb-4">
+                <BookOpen className="h-6 w-6 text-primary" />
+                <h3 className="text-xl font-semibold">Free Resources</h3>
               </div>
-              <div>
-                <h4 className="font-medium mb-2">🎥 Videos & Lectures</h4>
-                <ul className="text-sm text-muted-foreground space-y-1">
-                  <li>• Coursera free audit courses</li>
-                  <li>• YouTube channel recommendations</li>
-                  <li>• TED Talks on leadership</li>
-                </ul>
+              <div className="space-y-3">
+                {career.freeResources.map((resource, index) => (
+                  <div key={index} className="flex items-start gap-3 p-3 rounded-lg bg-muted/50 hover:bg-muted/70 transition-colors cursor-pointer">
+                    <div className="w-2 h-2 rounded-full bg-primary mt-2 flex-shrink-0" />
+                    <div>
+                      <h4 className="font-medium text-sm">{resource.title}</h4>
+                      <p className="text-xs text-muted-foreground">{resource.description}</p>
+                    </div>
+                  </div>
+                ))}
               </div>
-              <div>
-                <h4 className="font-medium mb-2">🌐 Online Communities</h4>
-                <ul className="text-sm text-muted-foreground space-y-1">
-                  <li>• Reddit communities</li>
-                  <li>• LinkedIn professional groups</li>
-                  <li>• Discord study groups</li>
-                </ul>
-              </div>
-              <div>
-                <h4 className="font-medium mb-2">🛠️ Free Tools</h4>
-                <ul className="text-sm text-muted-foreground space-y-1">
-                  <li>• Figma (design)</li>
-                  <li>• Notion (organization)</li>
-                  <li>• Google Analytics (data)</li>
-                </ul>
-              </div>
-            </div>
-          </Card>
+            </Card>
 
-          {/* Premium Content Teaser */}
-          <div className="relative">
-            <div className="absolute inset-0 bg-gradient-to-b from-transparent to-background/90 z-10 flex items-end justify-center pb-8">
-              <Button onClick={handlePremiumClick} className="shadow-lg">
-                <Lock className="h-4 w-4 mr-2" />
-                Unlock Premium Content
+            {/* Premium Resources */}
+            <Card className="p-6 border-primary/20 bg-gradient-to-br from-primary/5 to-transparent">
+              <div className="flex items-center gap-3 mb-4">
+                <Crown className="h-6 w-6 text-primary" />
+                <h3 className="text-xl font-semibold">Premium Unlock</h3>
+                <Badge variant="secondary" className="ml-auto bg-primary/10 text-primary">Pro</Badge>
+              </div>
+              <div className="space-y-3">
+                {career.premiumResources.map((resource, index) => (
+                  <div key={index} className="flex items-start gap-3 p-3 rounded-lg bg-background/50 border border-primary/10">
+                    <Lock className="h-4 w-4 text-primary mt-1 flex-shrink-0" />
+                    <div>
+                      <h4 className="font-medium text-sm">{resource.title}</h4>
+                      <p className="text-xs text-muted-foreground">{resource.description}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <Button variant="default" className="w-full mt-4 bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70">
+                <Sparkles className="h-4 w-4 mr-2" />
+                Unlock Premium Access
               </Button>
-            </div>
-            
-            <div className="blur-sm pointer-events-none">
-              <Card className="p-6 mb-6">
-                <h3 className="text-xl font-semibold mb-4 flex items-center gap-2">
-                  <DollarSign className="h-5 w-5 text-primary" />
-                  Salary Insights & Market Data
-                </h3>
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div>
-                    <p className="text-sm text-muted-foreground mb-2">Average Salary Range</p>
-                    <p className="text-2xl font-bold">$65,000 - $120,000</p>
-                    <p className="text-sm text-muted-foreground mt-1">Based on location and experience</p>
-                  </div>
-                  <div>
-                    <p className="text-sm text-muted-foreground mb-2">Job Market Growth</p>
-                    <p className="text-lg font-semibold text-green-600">+15% (Above Average)</p>
-                    <p className="text-sm text-muted-foreground mt-1">Next 5-year projection</p>
-                  </div>
-                </div>
-              </Card>
+            </Card>
+          </div>
 
-              <Card className="p-6 mb-6">
-                <h3 className="text-xl font-semibold mb-4">Premium Learning Path (12 Months)</h3>
-                <div className="space-y-4">
-                  <div className="flex items-start gap-3">
-                    <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center text-white text-sm font-bold">1</div>
-                    <div className="flex-1">
-                      <p className="font-medium">Foundation Building (Months 1-3)</p>
-                      <p className="text-sm text-muted-foreground mb-2">Essential skills and certifications</p>
-                      <div className="text-xs text-muted-foreground">
-                        • Custom study templates • Progress tracker • Weekly mentorship calls
-                      </div>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <div className="w-8 h-8 bg-primary/70 rounded-full flex items-center justify-center text-white text-sm font-bold">2</div>
-                    <div className="flex-1">
-                      <p className="font-medium">Skill Development (Months 4-8)</p>
-                      <p className="text-sm text-muted-foreground mb-2">Specialized training and portfolio building</p>
-                      <div className="text-xs text-muted-foreground">
-                        • Project templates • Industry insider interviews • Portfolio reviews
-                      </div>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <div className="w-8 h-8 bg-primary/50 rounded-full flex items-center justify-center text-white text-sm font-bold">3</div>
-                    <div className="flex-1">
-                      <p className="font-medium">Career Launch (Months 9-12)</p>
-                      <p className="text-sm text-muted-foreground mb-2">Job search strategy and networking</p>
-                      <div className="text-xs text-muted-foreground">
-                        • Interview prep • Salary negotiation guide • Industry networking events
-                      </div>
-                    </div>
-                  </div>
+          {/* Deep Dive Exploration Sections */}
+          <div className="space-y-8">
+            {/* Career Path Roadmap */}
+            <Card className="p-6">
+              <h3 className="text-xl font-semibold mb-4 flex items-center gap-2">
+                <MapPin className="h-5 w-5 text-primary" />
+                Career Path Roadmap
+              </h3>
+              <div className="grid md:grid-cols-3 gap-4">
+                <div className="p-4 rounded-lg bg-muted/30">
+                  <h4 className="font-medium text-sm mb-2 text-primary">Entry Level (0-2 years)</h4>
+                  <ul className="text-xs text-muted-foreground space-y-1">
+                    <li>• Build foundational skills</li>
+                    <li>• Learn industry tools</li>
+                    <li>• Work under supervision</li>
+                    <li>• Complete certification courses</li>
+                  </ul>
                 </div>
-              </Card>
+                <div className="p-4 rounded-lg bg-muted/30">
+                  <h4 className="font-medium text-sm mb-2 text-primary">Mid-Level (3-7 years)</h4>
+                  <ul className="text-xs text-muted-foreground space-y-1">
+                    <li>• Take on complex projects</li>
+                    <li>• Mentor junior team members</li>
+                    <li>• Specialize in niche areas</li>
+                    <li>• Lead small teams</li>
+                  </ul>
+                </div>
+                <div className="p-4 rounded-lg bg-muted/30">
+                  <h4 className="font-medium text-sm mb-2 text-primary">Senior Level (8+ years)</h4>
+                  <ul className="text-xs text-muted-foreground space-y-1">
+                    <li>• Strategic decision making</li>
+                    <li>• Department leadership</li>
+                    <li>• Industry thought leadership</li>
+                    <li>• Cross-functional collaboration</li>
+                  </ul>
+                </div>
+              </div>
+            </Card>
 
-              <Card className="p-6">
-                <h3 className="text-xl font-semibold mb-4">Exclusive Premium Content</h3>
-                <div className="grid md:grid-cols-2 gap-4">
-                  <div>
-                    <h4 className="font-medium mb-2">📊 Personal Goal Trackers</h4>
-                    <p className="text-sm text-muted-foreground">Custom templates to track your progress and set meaningful milestones</p>
-                  </div>
-                  <div>
-                    <h4 className="font-medium mb-2">🎯 Industry Templates</h4>
-                    <p className="text-sm text-muted-foreground">Ready-to-use templates for portfolios, resumes, and project planning</p>
-                  </div>
-                  <div>
-                    <h4 className="font-medium mb-2">🤝 Mentorship Access</h4>
-                    <p className="text-sm text-muted-foreground">Monthly 1-on-1 calls with industry professionals</p>
-                  </div>
-                  <div>
-                    <h4 className="font-medium mb-2">🏢 Conference Access</h4>
-                    <p className="text-sm text-muted-foreground">Exclusive invites to virtual industry conferences and networking events</p>
+            {/* Day in the Life */}
+            <Card className="p-6">
+              <h3 className="text-xl font-semibold mb-4 flex items-center gap-2">
+                <Clock className="h-5 w-5 text-primary" />
+                A Day in the Life
+              </h3>
+              <div className="space-y-3">
+                <div className="flex gap-3 p-3 rounded-lg bg-muted/30">
+                  <span className="text-xs font-medium text-primary min-w-[60px]">9:00 AM</span>
+                  <span className="text-sm">Review project status and priorities for the day</span>
+                </div>
+                <div className="flex gap-3 p-3 rounded-lg bg-muted/30">
+                  <span className="text-xs font-medium text-primary min-w-[60px]">10:00 AM</span>
+                  <span className="text-sm">Team standup meeting and collaboration session</span>
+                </div>
+                <div className="flex gap-3 p-3 rounded-lg bg-muted/30">
+                  <span className="text-xs font-medium text-primary min-w-[60px]">11:30 AM</span>
+                  <span className="text-sm">Deep work on core {career.title.toLowerCase()} tasks</span>
+                </div>
+                <div className="flex gap-3 p-3 rounded-lg bg-muted/30">
+                  <span className="text-xs font-medium text-primary min-w-[60px]">2:00 PM</span>
+                  <span className="text-sm">Client/stakeholder meetings and feedback sessions</span>
+                </div>
+                <div className="flex gap-3 p-3 rounded-lg bg-muted/30">
+                  <span className="text-xs font-medium text-primary min-w-[60px]">4:00 PM</span>
+                  <span className="text-sm">Documentation, planning, and skill development</span>
+                </div>
+              </div>
+            </Card>
+
+            {/* Industry Insights */}
+            <Card className="p-6">
+              <h3 className="text-xl font-semibold mb-4 flex items-center gap-2">
+                <TrendingUp className="h-5 w-5 text-primary" />
+                Industry Outlook
+              </h3>
+              <div className="grid md:grid-cols-2 gap-6">
+                <div>
+                  <h4 className="font-medium mb-2">Growth Trends</h4>
+                  <ul className="text-sm text-muted-foreground space-y-1">
+                    <li>• Remote work opportunities increasing</li>
+                    <li>• AI/automation changing skill requirements</li>
+                    <li>• Growing demand for specialized expertise</li>
+                    <li>• Cross-functional collaboration emphasis</li>
+                  </ul>
+                </div>
+                <div>
+                  <h4 className="font-medium mb-2">Future Skills</h4>
+                  <ul className="text-sm text-muted-foreground space-y-1">
+                    <li>• Digital literacy and tech adaptation</li>
+                    <li>• Emotional intelligence and leadership</li>
+                    <li>• Data analysis and interpretation</li>
+                    <li>• Creative problem-solving approaches</li>
+                  </ul>
+                </div>
+              </div>
+            </Card>
+
+            {/* Networking & Community */}
+            <Card className="p-6">
+              <h3 className="text-xl font-semibold mb-4 flex items-center gap-2">
+                <Users className="h-5 w-5 text-primary" />
+                Professional Community
+              </h3>
+              <div className="grid md:grid-cols-2 gap-4">
+                <div className="space-y-3">
+                  <h4 className="font-medium text-sm">Professional Organizations</h4>
+                  <div className="space-y-2 text-xs text-muted-foreground">
+                    <div className="p-2 rounded bg-muted/30">Industry Association of {career.category}s</div>
+                    <div className="p-2 rounded bg-muted/30">Professional {career.title} Network</div>
+                    <div className="p-2 rounded bg-muted/30">Global {career.category} Alliance</div>
                   </div>
                 </div>
-              </Card>
-            </div>
+                <div className="space-y-3">
+                  <h4 className="font-medium text-sm">Online Communities</h4>
+                  <div className="space-y-2 text-xs text-muted-foreground">
+                    <div className="p-2 rounded bg-muted/30">Reddit r/{career.title.replace(' ', '').toLowerCase()}</div>
+                    <div className="p-2 rounded bg-muted/30">LinkedIn {career.title} Groups</div>
+                    <div className="p-2 rounded bg-muted/30">Discord Communities & Slack Channels</div>
+                  </div>
+                </div>
+              </div>
+            </Card>
+
+            {/* Salary & Benefits Insights */}
+            <Card className="p-6">
+              <h3 className="text-xl font-semibold mb-4 flex items-center gap-2">
+                <DollarSign className="h-5 w-5 text-primary" />
+                Compensation Overview
+              </h3>
+              <div className="grid md:grid-cols-3 gap-4">
+                <div className="text-center p-4 rounded-lg bg-muted/30">
+                  <div className="text-2xl font-bold text-primary">$45-65K</div>
+                  <div className="text-xs text-muted-foreground">Entry Level</div>
+                </div>
+                <div className="text-center p-4 rounded-lg bg-muted/30">
+                  <div className="text-2xl font-bold text-primary">$65-95K</div>
+                  <div className="text-xs text-muted-foreground">Mid Level</div>
+                </div>
+                <div className="text-center p-4 rounded-lg bg-muted/30">
+                  <div className="text-2xl font-bold text-primary">$95-150K+</div>
+                  <div className="text-xs text-muted-foreground">Senior Level</div>
+                </div>
+              </div>
+              <p className="text-xs text-muted-foreground mt-4 text-center">
+                * Ranges vary by location, company size, and industry. Remote positions may offer different compensation structures.
+              </p>
+            </Card>
           </div>
         </div>
       </div>
-
-      {/* Premium Modal */}
-      {showPremiumModal && (
-        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-6">
-          <Card className="p-8 max-w-md w-full">
-            <h3 className="text-2xl font-bold mb-4">Unlock Your Full Career Potential</h3>
-            <p className="text-muted-foreground mb-6">
-              Get access to detailed salary data, complete career roadmaps, industry insights, and personalized action plans.
-            </p>
-            <div className="space-y-3 mb-6">
-              <div className="flex items-center gap-2">
-                <Star className="h-4 w-4 text-primary" />
-                <span className="text-sm">Comprehensive salary & market data</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Star className="h-4 w-4 text-primary" />
-                <span className="text-sm">Step-by-step career roadmaps</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Star className="h-4 w-4 text-primary" />
-                <span className="text-sm">Industry insider insights</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Star className="h-4 w-4 text-primary" />
-                <span className="text-sm">Personalized action plans</span>
-              </div>
-            </div>
-            <div className="flex gap-3">
-              <Button className="flex-1">
-                Get Premium Access
-              </Button>
-              <Button variant="outline" onClick={() => setShowPremiumModal(false)}>
-                Maybe Later
-              </Button>
-            </div>
-          </Card>
-        </div>
-      )}
     </div>
   );
 };

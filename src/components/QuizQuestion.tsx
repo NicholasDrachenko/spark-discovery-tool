@@ -23,7 +23,7 @@ export const QuizQuestionComponent = ({
   selectedOption,
   showFeedback = false
 }: QuizQuestionProps) => {
-  const [localSelected, setLocalSelected] = useState<number | undefined>(selectedOption);
+  const [localSelected, setLocalSelected] = useState<number | undefined>(undefined);
 
   const handleOptionSelect = (optionIndex: number) => {
     setLocalSelected(optionIndex);
