@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { QuizQuestionComponent } from "./QuizQuestion";
 import { quizData } from "./QuizData";
 import { Button } from "@/components/ui/button";
@@ -11,6 +12,7 @@ interface QuizAnswer {
 }
 
 export const SparkQuiz = () => {
+  const navigate = useNavigate();
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [answers, setAnswers] = useState<QuizAnswer[]>([]);
   const [quizStarted, setQuizStarted] = useState(false);
@@ -122,14 +124,20 @@ export const SparkQuiz = () => {
             Congratulations! You've explored 15 unique perspectives about your work style and discovered insights that can guide your career path.
           </p>
           
-          <Card className="p-8 shadow-glow gradient-spark max-w-2xl mx-auto animate-pulse-glow">
-            <h3 className="text-3xl font-bold text-primary-foreground mb-2">
-              ✨ Let's See Those Results! ✨
-            </h3>
-            <p className="text-primary-foreground/90 text-lg">
-              Your personalized career insights are ready
-            </p>
-          </Card>
+          <Button
+            onClick={() => navigate("/results", { state: { answers } })}
+            className="p-8 shadow-glow gradient-spark max-w-2xl mx-auto animate-pulse-glow transition-all duration-300 hover:scale-105 active:scale-95 h-auto"
+            variant="ghost"
+          >
+            <div className="text-center">
+              <h3 className="text-3xl font-bold text-primary-foreground mb-2">
+                ✨ Let's See Those Results! ✨
+              </h3>
+              <p className="text-primary-foreground/90 text-lg">
+                Your personalized career insights are ready
+              </p>
+            </div>
+          </Button>
         </div>
       </div>
     );
