@@ -92,7 +92,7 @@ const CareerDetail = () => {
                 <h3 className="text-xl font-semibold">Free Resources</h3>
               </div>
               <div className="space-y-3">
-                {career.freeResources.map((resource, index) => (
+                {(career.freeResources || []).map((resource, index) => (
                   <div key={index} className="flex items-start gap-3 p-3 rounded-lg bg-muted/50 hover:bg-muted/70 transition-colors cursor-pointer">
                     <div className="w-2 h-2 rounded-full bg-primary mt-2 flex-shrink-0" />
                     <div>
@@ -112,7 +112,7 @@ const CareerDetail = () => {
                 <Badge variant="secondary" className="ml-auto bg-primary/10 text-primary">Pro</Badge>
               </div>
               <div className="space-y-3">
-                {career.premiumResources.map((resource, index) => (
+                {(career.premiumResources || []).map((resource, index) => (
                   <div key={index} className="flex items-start gap-3 p-3 rounded-lg bg-background/50 border border-primary/10">
                     <Lock className="h-4 w-4 text-primary mt-1 flex-shrink-0" />
                     <div>

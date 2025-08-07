@@ -124,9 +124,9 @@ export const SparkQuiz = () => {
             Congratulations! You've explored 15 unique perspectives about your work style and discovered insights that can guide your career path.
           </p>
           
-          <Button
+           <Button
             onClick={() => navigate("/results", { state: { answers } })}
-            className="p-8 shadow-glow gradient-spark max-w-2xl mx-auto animate-pulse transition-all duration-300 hover:scale-105 active:scale-95 h-auto"
+            className="p-8 shadow-glow gradient-spark max-w-2xl mx-auto transition-all duration-300 hover:scale-105 active:scale-95 h-auto"
             variant="ghost"
           >
             <div className="text-center">
