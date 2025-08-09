@@ -329,7 +329,8 @@ const Results = () => {
           {recommendations.map((career, index) => (
             <Card 
               key={career.title}
-              className="p-6 hover:shadow-lg transition-all duration-300 cursor-pointer group hover-scale"
+              className="p-6 hover:shadow-lg transition-all duration-500 cursor-pointer group hover-scale animate-fade-in border-2 hover:border-primary/30 hover:bg-gradient-to-br hover:from-primary/5 hover:to-transparent"
+              style={{ animationDelay: `${index * 150}ms` }}
               onClick={() => handleCareerClick(career)}
             >
               <div className="flex items-start justify-between mb-4">
@@ -337,12 +338,12 @@ const Results = () => {
                   <h3 className="text-xl font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">
                     {career.title}
                   </h3>
-                  <Badge variant="secondary" className="mb-2">
+                  <Badge variant="secondary" className="mb-2 group-hover:bg-primary/10 transition-colors">
                     {career.category}
                   </Badge>
                 </div>
-                <div className="flex items-center gap-1 bg-primary/10 px-2 py-1 rounded-full">
-                  <Star className="h-4 w-4 text-primary" />
+                <div className="flex items-center gap-1 bg-primary/10 px-2 py-1 rounded-full group-hover:bg-primary/20 transition-colors">
+                  <Star className="h-4 w-4 text-primary group-hover:animate-pulse" />
                   <span className="text-sm font-medium text-primary">{career.match}%</span>
                 </div>
               </div>
@@ -354,10 +355,15 @@ const Results = () => {
               <div className="mb-4">
                 <div className="flex flex-wrap gap-1">
                   {career.skills.slice(0, 3).map((skill) => (
-                    <Badge key={skill} variant="outline" className="text-xs">
+                    <Badge key={skill} variant="outline" className="text-xs group-hover:border-primary/30 transition-colors">
                       {skill}
                     </Badge>
                   ))}
+                  {career.skills.length > 3 && (
+                    <Badge variant="outline" className="text-xs group-hover:border-primary/30 transition-colors">
+                      +{career.skills.length - 3}
+                    </Badge>
+                  )}
                 </div>
               </div>
               

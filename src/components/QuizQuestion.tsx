@@ -100,8 +100,8 @@ export const QuizQuestionComponent = ({
 
       {/* Feedback */}
       <div className="mb-8 min-h-[120px]">
-        {showFeedback && selectedOptionData && (
-          <Card className="p-6 gradient-secondary animate-float">
+        {selectedOptionData && (
+          <Card className="p-6 gradient-secondary animate-fade-in">
             <div className="flex items-start gap-4">
               <Sparkles className="h-6 w-6 text-secondary-foreground mt-1 animate-spin" />
               <div>

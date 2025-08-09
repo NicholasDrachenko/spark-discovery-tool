@@ -330,15 +330,58 @@ const CareerDetail = () => {
                 <h3 className="text-xl font-semibold">Free Resources</h3>
               </div>
               <div className="space-y-3">
-                {(career.freeResources || []).map((resource, index) => (
-                  <div key={index} className="flex items-start gap-3 p-3 rounded-lg bg-muted/50 hover:bg-muted/70 transition-colors cursor-pointer">
-                    <div className="w-2 h-2 rounded-full bg-primary mt-2 flex-shrink-0" />
-                    <div>
-                      <h4 className="font-medium text-sm">{resource.title}</h4>
-                      <p className="text-xs text-muted-foreground">{resource.description}</p>
-                    </div>
-                  </div>
-                ))}
+                {(career.freeResources || []).map((resource, index) => {
+                  const getResourceUrl = (title: string, careerTitle: string) => {
+                    // Map resource titles to actual URLs
+                    const urlMap: Record<string, string> = {
+                      "PMP Certification Guide (Free)": "https://www.pmi.org/certifications/project-management-pmp",
+                      "Agile Project Management Course": "https://www.coursera.org/learn/agile-project-management",
+                      "Microsoft Project Tutorial Series": "https://www.youtube.com/results?search_query=microsoft+project+tutorial",
+                      "Harvard Business Review PM Articles": "https://hbr.org/topic/project-management",
+                      "SQL for Data Analysis Course": "https://www.codecademy.com/learn/sql",
+                      "Lean Six Sigma Yellow Belt": "https://www.sixsigmacouncil.org/six-sigma-yellow-belt/",
+                      "Excel Data Analysis Toolkit": "https://support.microsoft.com/en-us/office/analyze-data-in-excel-3223aab8-f543-4fda-85ed-76bb0295ffc4",
+                      "Business Process Mapping Guide": "https://www.lucidchart.com/pages/business-process-mapping",
+                      "Google UX Design Certificate": "https://www.coursera.org/professional-certificates/google-ux-design",
+                      "Figma Design System Tutorial": "https://www.figma.com/resource-library/design-systems/",
+                      "UX Research Methods Handbook": "https://www.nngroup.com/articles/which-ux-research-methods/",
+                      "Design Thinking Workshop Kit": "https://www.ideou.com/pages/design-thinking",
+                      "Brand Strategy Masterclass": "https://www.futurelearn.com/courses/brand-strategy",
+                      "Adobe Creative Suite Tutorials": "https://helpx.adobe.com/creative-suite.html",
+                      "Creative Leadership Podcast": "https://podcasts.apple.com/us/podcast/creative-pep-talk/id923555467",
+                      "Design Inspiration Gallery": "https://www.behance.net/",
+                      "Product Design Sprint Guide": "https://www.gv.com/sprint/",
+                      "User Testing Platform Access": "https://www.usertesting.com/",
+                      "Product Design Case Studies": "https://uxplanet.org/",
+                      "Wireframing Templates": "https://www.figma.com/templates/",
+                      "Content Strategy Playbook": "https://contentmarketinginstitute.com/",
+                      "Video Editing Crash Course": "https://www.blackmagicdesign.com/products/davinciresolve/",
+                      "SEO Content Optimization": "https://moz.com/beginners-guide-to-seo",
+                      "Creator Economy Newsletter": "https://creatoreconomy.so/",
+                      "Team Coaching Certification": "https://coachfederation.org/",
+                      "Emotional Intelligence Assessment": "https://www.psychology.org.au/for-the-public/psychology-topics/emotional-intelligence",
+                      "Team Building Activity Library": "https://www.teambuilding.com/blog/team-building-exercises",
+                      "Performance Management Templates": "https://www.shrm.org/resourcesandtools/tools-and-samples/pages/default.aspx"
+                    };
+                    return urlMap[title] || "#";
+                  };
+                  
+                  return (
+                    <a 
+                      key={index} 
+                      href={getResourceUrl(resource.title, career.title)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-start gap-3 p-3 rounded-lg bg-muted/50 hover:bg-muted/70 transition-colors cursor-pointer hover:scale-[1.02] group"
+                    >
+                      <div className="w-2 h-2 rounded-full bg-primary mt-2 flex-shrink-0 group-hover:scale-125 transition-transform" />
+                      <div>
+                        <h4 className="font-medium text-sm group-hover:text-primary transition-colors">{resource.title}</h4>
+                        <p className="text-xs text-muted-foreground">{resource.description}</p>
+                      </div>
+                    </a>
+                  );
+                })}
               </div>
             </Card>
 
