@@ -137,19 +137,52 @@ const Results = () => {
           title: "Project Manager",
           description: "Lead teams and organize complex projects from start to finish",
           skills: ["Planning", "Leadership", "Communication", "Problem-solving", "Risk Management"],
-          insight: "Organization is your superpower — the future loves planners like you."
+          insight: "Organization is your superpower — the future loves planners like you.",
+          freeResources: [
+            { title: "PMP Certification Guide (Free)", description: "Complete study guide for Project Management Professional certification" },
+            { title: "Agile Project Management Course", description: "Free Coursera course on agile methodologies and scrum" },
+            { title: "Microsoft Project Tutorial Series", description: "YouTube series covering project management tools and techniques" },
+            { title: "Harvard Business Review PM Articles", description: "Free access to project management best practices and case studies" }
+          ],
+          premiumResources: [
+            { title: "1-on-1 PM Mentorship Program", description: "Monthly sessions with senior project managers from Fortune 500 companies" },
+            { title: "PM Template Library", description: "200+ proven project templates, checklists, and frameworks" },
+            { title: "Industry Conference Access", description: "Exclusive invites to PMI Global Conference and local chapter events" }
+          ]
         },
         {
           title: "Operations Analyst",
           description: "Optimize business processes and improve operational efficiency",
           skills: ["Data Analysis", "Process Improvement", "Strategic Thinking", "Excel/SQL", "Project Management"],
-          insight: "You're wired for puzzle-solving. Obstacles are your invitation."
+          insight: "You're wired for puzzle-solving. Obstacles are your invitation.",
+          freeResources: [
+            { title: "SQL for Data Analysis Course", description: "Free CodeAcademy course covering database querying and analysis" },
+            { title: "Lean Six Sigma Yellow Belt", description: "Free introduction to process improvement methodologies" },
+            { title: "Excel Data Analysis Toolkit", description: "Advanced Excel functions and pivot table tutorials" },
+            { title: "Business Process Mapping Guide", description: "Free templates and guides for documenting workflows" }
+          ],
+          premiumResources: [
+            { title: "Operations Excellence Bootcamp", description: "6-week intensive program with real company case studies" },
+            { title: "Advanced Analytics Suite", description: "Access to Tableau, Power BI, and statistical analysis tools" },
+            { title: "Industry Analyst Network", description: "Connect with operations leaders across different industries" }
+          ]
         },
         {
           title: "UX Designer",
           description: "Design user-friendly interfaces and improve user experiences",
           skills: ["Design Thinking", "User Research", "Prototyping", "Figma/Sketch", "Information Architecture"],
-          insight: "That's big innovative thinking — not all imagination leaps."
+          insight: "That's big innovative thinking — not all imagination leaps.",
+          freeResources: [
+            { title: "Google UX Design Certificate", description: "Free professional certificate program through Coursera" },
+            { title: "Figma Design System Tutorial", description: "Complete guide to building scalable design systems" },
+            { title: "UX Research Methods Handbook", description: "Free comprehensive guide to user research techniques" },
+            { title: "Design Thinking Workshop Kit", description: "Templates and exercises for running design thinking sessions" }
+          ],
+          premiumResources: [
+            { title: "Portfolio Review with Senior UXers", description: "1-on-1 feedback sessions with design leaders from top tech companies" },
+            { title: "Advanced Prototyping Tools", description: "Premium access to Principle, Framer, and other prototyping software" },
+            { title: "UX Conference Season Pass", description: "Access to IXDA, UX Week, and other major design conferences" }
+          ]
         }
       ],
       Creator: [
@@ -157,19 +190,52 @@ const Results = () => {
           title: "Creative Director",
           description: "Lead creative teams and develop innovative brand strategies",
           skills: ["Creative Vision", "Brand Strategy", "Team Leadership", "Adobe Creative Suite", "Marketing"],
-          insight: "You build things that matter. That's rare and powerful."
+          insight: "You build things that matter. That's rare and powerful.",
+          freeResources: [
+            { title: "Brand Strategy Masterclass", description: "Free course on developing compelling brand narratives and positioning" },
+            { title: "Adobe Creative Suite Tutorials", description: "Comprehensive video series covering Photoshop, Illustrator, and InDesign" },
+            { title: "Creative Leadership Podcast", description: "Weekly interviews with creative directors from top agencies" },
+            { title: "Design Inspiration Gallery", description: "Curated collection of award-winning creative campaigns" }
+          ],
+          premiumResources: [
+            { title: "Creative Director Mentorship", description: "Quarterly strategy sessions with award-winning creative leaders" },
+            { title: "Agency Pitch Deck Library", description: "200+ winning pitch presentations from top creative agencies" },
+            { title: "Cannes Lions Workshop Access", description: "Behind-the-scenes content and workshops from award-winning campaigns" }
+          ]
         },
         {
           title: "Product Designer",
           description: "Design and develop new products that solve real problems",
           skills: ["Product Development", "Design Thinking", "Innovation", "User Testing", "Wireframing"],
-          insight: "Purpose drives you — and purpose doesn't feel it."
+          insight: "Purpose drives you — and purpose doesn't feel it.",
+          freeResources: [
+            { title: "Product Design Sprint Guide", description: "Free 5-day design sprint methodology from Google Ventures" },
+            { title: "User Testing Platform Access", description: "Free tier access to user testing and feedback tools" },
+            { title: "Product Design Case Studies", description: "In-depth breakdowns of successful product launches" },
+            { title: "Wireframing Templates", description: "Free Sketch and Figma templates for common interface patterns" }
+          ],
+          premiumResources: [
+            { title: "Product Design Bootcamp", description: "8-week intensive program with real startup product challenges" },
+            { title: "Design System Audit Tool", description: "AI-powered analysis of your design systems and components" },
+            { title: "Product Leader Network", description: "Access to product design leaders from unicorn startups" }
+          ]
         },
         {
           title: "Content Creator",
           description: "Create engaging content across various digital platforms",
           skills: ["Storytelling", "Visual Design", "Social Media", "Video Editing", "SEO/Analytics"],
-          insight: "You thrive in your inner world — that's where breakthroughs begin."
+          insight: "You thrive in your inner world — that's where breakthroughs begin.",
+          freeResources: [
+            { title: "Content Strategy Playbook", description: "Free guide to building content calendars and engagement strategies" },
+            { title: "Video Editing Crash Course", description: "DaVinci Resolve tutorials for professional video production" },
+            { title: "SEO Content Optimization", description: "Free tools and guides for content that ranks on search engines" },
+            { title: "Creator Economy Newsletter", description: "Weekly insights on monetization and platform trends" }
+          ],
+          premiumResources: [
+            { title: "Creator Accelerator Program", description: "3-month program with successful YouTubers and TikTok creators" },
+            { title: "Premium Content Tools Suite", description: "Access to Canva Pro, Adobe Suite, and scheduling platforms" },
+            { title: "Brand Partnership Network", description: "Connect with brands looking for content creator partnerships" }
+          ]
         }
       ],
       Connector: [
@@ -177,7 +243,18 @@ const Results = () => {
           title: "Team Coach",
           description: "Help teams improve performance and achieve their goals",
           skills: ["Coaching", "Team Building", "Communication", "Emotional Intelligence", "Performance Management"],
-          insight: "Your energy lifts the room. That's leadership in motion."
+          insight: "Your energy lifts the room. That's leadership in motion.",
+          freeResources: [
+            { title: "Team Coaching Certification", description: "Free ICF-accredited coaching fundamentals course" },
+            { title: "Emotional Intelligence Assessment", description: "Free EQ assessment tools and development resources" },
+            { title: "Team Building Activity Library", description: "100+ proven exercises for virtual and in-person teams" },
+            { title: "Performance Management Templates", description: "Free frameworks for goal setting and feedback conversations" }
+          ],
+          premiumResources: [
+            { title: "Executive Coaching Certification", description: "Advanced coaching certification with practice clients" },
+            { title: "Team Psychology Masterclass", description: "Deep dive into team dynamics with organizational psychologists" },
+            { title: "Corporate Training Network", description: "Access to Fortune 500 companies for coaching opportunities" }
+          ]
         },
         {
           title: "Community Manager",

@@ -25,6 +25,244 @@ const CareerDetail = () => {
     return null;
   }
 
+  const getCareerRoadmap = (careerTitle: string) => {
+    const roadmaps: Record<string, any> = {
+      "Project Manager": (
+        <div className="grid md:grid-cols-3 gap-4">
+          <div className="p-4 rounded-lg bg-muted/30">
+            <h4 className="font-medium text-sm mb-2 text-primary">Entry Level (0-2 years)</h4>
+            <ul className="text-xs text-muted-foreground space-y-1">
+              <li>• Learn Agile/Scrum methodologies</li>
+              <li>• Master project management tools (Jira, Asana)</li>
+              <li>• Assist senior PMs with coordination</li>
+              <li>• Complete PMP or CAPM certification</li>
+            </ul>
+          </div>
+          <div className="p-4 rounded-lg bg-muted/30">
+            <h4 className="font-medium text-sm mb-2 text-primary">Mid-Level (3-7 years)</h4>
+            <ul className="text-xs text-muted-foreground space-y-1">
+              <li>• Lead cross-functional project teams</li>
+              <li>• Manage budgets up to $500K-$2M</li>
+              <li>• Develop risk management expertise</li>
+              <li>• Mentor junior project coordinators</li>
+            </ul>
+          </div>
+          <div className="p-4 rounded-lg bg-muted/30">
+            <h4 className="font-medium text-sm mb-2 text-primary">Senior Level (8+ years)</h4>
+            <ul className="text-xs text-muted-foreground space-y-1">
+              <li>• Program management of multiple projects</li>
+              <li>• Strategic portfolio planning</li>
+              <li>• PMO leadership and process development</li>
+              <li>• Executive stakeholder management</li>
+            </ul>
+          </div>
+        </div>
+      ),
+      "Operations Analyst": (
+        <div className="grid md:grid-cols-3 gap-4">
+          <div className="p-4 rounded-lg bg-muted/30">
+            <h4 className="font-medium text-sm mb-2 text-primary">Entry Level (0-2 years)</h4>
+            <ul className="text-xs text-muted-foreground space-y-1">
+              <li>• Master Excel and SQL fundamentals</li>
+              <li>• Learn process mapping techniques</li>
+              <li>• Support data collection and analysis</li>
+              <li>• Complete Lean Six Sigma Yellow Belt</li>
+            </ul>
+          </div>
+          <div className="p-4 rounded-lg bg-muted/30">
+            <h4 className="font-medium text-sm mb-2 text-primary">Mid-Level (3-7 years)</h4>
+            <ul className="text-xs text-muted-foreground space-y-1">
+              <li>• Lead process improvement initiatives</li>
+              <li>• Advanced analytics with Python/R</li>
+              <li>• Design operational dashboards</li>
+              <li>• Earn Six Sigma Green/Black Belt</li>
+            </ul>
+          </div>
+          <div className="p-4 rounded-lg bg-muted/30">
+            <h4 className="font-medium text-sm mb-2 text-primary">Senior Level (8+ years)</h4>
+            <ul className="text-xs text-muted-foreground space-y-1">
+              <li>• Operations strategy development</li>
+              <li>• Digital transformation leadership</li>
+              <li>• Cross-departmental optimization</li>
+              <li>• Build analytics teams and capabilities</li>
+            </ul>
+          </div>
+        </div>
+      ),
+      "UX Designer": (
+        <div className="grid md:grid-cols-3 gap-4">
+          <div className="p-4 rounded-lg bg-muted/30">
+            <h4 className="font-medium text-sm mb-2 text-primary">Entry Level (0-2 years)</h4>
+            <ul className="text-xs text-muted-foreground space-y-1">
+              <li>• Master Figma and design principles</li>
+              <li>• Build portfolio with personal projects</li>
+              <li>• Learn user research basics</li>
+              <li>• Complete Google UX Design Certificate</li>
+            </ul>
+          </div>
+          <div className="p-4 rounded-lg bg-muted/30">
+            <h4 className="font-medium text-sm mb-2 text-primary">Mid-Level (3-7 years)</h4>
+            <ul className="text-xs text-muted-foreground space-y-1">
+              <li>• Lead end-to-end design projects</li>
+              <li>• Conduct usability testing and research</li>
+              <li>• Collaborate closely with developers</li>
+              <li>• Specialize in mobile or web design</li>
+            </ul>
+          </div>
+          <div className="p-4 rounded-lg bg-muted/30">
+            <h4 className="font-medium text-sm mb-2 text-primary">Senior Level (8+ years)</h4>
+            <ul className="text-xs text-muted-foreground space-y-1">
+              <li>• Design system architecture</li>
+              <li>• UX strategy and team leadership</li>
+              <li>• Cross-platform design standards</li>
+              <li>• Influence product roadmap decisions</li>
+            </ul>
+          </div>
+        </div>
+      ),
+      "Creative Director": (
+        <div className="grid md:grid-cols-3 gap-4">
+          <div className="p-4 rounded-lg bg-muted/30">
+            <h4 className="font-medium text-sm mb-2 text-primary">Entry Level (0-2 years)</h4>
+            <ul className="text-xs text-muted-foreground space-y-1">
+              <li>• Master Adobe Creative Suite</li>
+              <li>• Assist with campaign development</li>
+              <li>• Build diverse creative portfolio</li>
+              <li>• Learn brand strategy fundamentals</li>
+            </ul>
+          </div>
+          <div className="p-4 rounded-lg bg-muted/30">
+            <h4 className="font-medium text-sm mb-2 text-primary">Mid-Level (3-7 years)</h4>
+            <ul className="text-xs text-muted-foreground space-y-1">
+              <li>• Lead creative campaigns end-to-end</li>
+              <li>• Manage small creative teams</li>
+              <li>• Client presentation and pitching</li>
+              <li>• Develop brand voice and identity</li>
+            </ul>
+          </div>
+          <div className="p-4 rounded-lg bg-muted/30">
+            <h4 className="font-medium text-sm mb-2 text-primary">Senior Level (8+ years)</h4>
+            <ul className="text-xs text-muted-foreground space-y-1">
+              <li>• Creative vision and strategy leadership</li>
+              <li>• Agency or in-house team management</li>
+              <li>• Award-winning campaign development</li>
+              <li>• Industry thought leadership and speaking</li>
+            </ul>
+          </div>
+        </div>
+      ),
+      "Product Designer": (
+        <div className="grid md:grid-cols-3 gap-4">
+          <div className="p-4 rounded-lg bg-muted/30">
+            <h4 className="font-medium text-sm mb-2 text-primary">Entry Level (0-2 years)</h4>
+            <ul className="text-xs text-muted-foreground space-y-1">
+              <li>• Learn design thinking methodology</li>
+              <li>• Master prototyping tools</li>
+              <li>• Assist with user research studies</li>
+              <li>• Build product design portfolio</li>
+            </ul>
+          </div>
+          <div className="p-4 rounded-lg bg-muted/30">
+            <h4 className="font-medium text-sm mb-2 text-primary">Mid-Level (3-7 years)</h4>
+            <ul className="text-xs text-muted-foreground space-y-1">
+              <li>• Own product feature design cycles</li>
+              <li>• Lead user testing and validation</li>
+              <li>• Work closely with product managers</li>
+              <li>• Contribute to design system evolution</li>
+            </ul>
+          </div>
+          <div className="p-4 rounded-lg bg-muted/30">
+            <h4 className="font-medium text-sm mb-2 text-primary">Senior Level (8+ years)</h4>
+            <ul className="text-xs text-muted-foreground space-y-1">
+              <li>• Product design strategy and vision</li>
+              <li>• Cross-functional team leadership</li>
+              <li>• Startup to scale product experience</li>
+              <li>• Design team mentorship and growth</li>
+            </ul>
+          </div>
+        </div>
+      ),
+      "Content Creator": (
+        <div className="grid md:grid-cols-3 gap-4">
+          <div className="p-4 rounded-lg bg-muted/30">
+            <h4 className="font-medium text-sm mb-2 text-primary">Entry Level (0-2 years)</h4>
+            <ul className="text-xs text-muted-foreground space-y-1">
+              <li>• Build audience on 1-2 platforms</li>
+              <li>• Learn content planning and scheduling</li>
+              <li>• Master basic video/photo editing</li>
+              <li>• Develop your unique voice and niche</li>
+            </ul>
+          </div>
+          <div className="p-4 rounded-lg bg-muted/30">
+            <h4 className="font-medium text-sm mb-2 text-primary">Mid-Level (3-7 years)</h4>
+            <ul className="text-xs text-muted-foreground space-y-1">
+              <li>• Monetize through sponsorships</li>
+              <li>• Expand to multiple content formats</li>
+              <li>• Build email list and community</li>
+              <li>• Create your own products/courses</li>
+            </ul>
+          </div>
+          <div className="p-4 rounded-lg bg-muted/30">
+            <h4 className="font-medium text-sm mb-2 text-primary">Senior Level (8+ years)</h4>
+            <ul className="text-xs text-muted-foreground space-y-1">
+              <li>• Build media company or agency</li>
+              <li>• Launch digital products and courses</li>
+              <li>• Speaking and consulting opportunities</li>
+              <li>• Mentor other creators and entrepreneurs</li>
+            </ul>
+          </div>
+        </div>
+      ),
+      "Team Coach": (
+        <div className="grid md:grid-cols-3 gap-4">
+          <div className="p-4 rounded-lg bg-muted/30">
+            <h4 className="font-medium text-sm mb-2 text-primary">Entry Level (0-2 years)</h4>
+            <ul className="text-xs text-muted-foreground space-y-1">
+              <li>• Complete coaching certification</li>
+              <li>• Gain team leadership experience</li>
+              <li>• Study group dynamics and psychology</li>
+              <li>• Practice with volunteer teams</li>
+            </ul>
+          </div>
+          <div className="p-4 rounded-lg bg-muted/30">
+            <h4 className="font-medium text-sm mb-2 text-primary">Mid-Level (3-7 years)</h4>
+            <ul className="text-xs text-muted-foreground space-y-1">
+              <li>• Coach high-performing teams</li>
+              <li>• Develop custom coaching programs</li>
+              <li>• Measure team performance improvements</li>
+              <li>• Specialize in specific industries</li>
+            </ul>
+          </div>
+          <div className="p-4 rounded-lg bg-muted/30">
+            <h4 className="font-medium text-sm mb-2 text-primary">Senior Level (8+ years)</h4>
+            <ul className="text-xs text-muted-foreground space-y-1">
+              <li>• Executive and C-suite coaching</li>
+              <li>• Organizational transformation work</li>
+              <li>• Train other coaches and facilitators</li>
+              <li>• Thought leadership in team development</li>
+            </ul>
+          </div>
+        </div>
+      )
+    };
+
+    return roadmaps[careerTitle] || roadmaps["Project Manager"];
+  };
+
+  const getCompensationData = (careerTitle: string) => {
+    const compensation: Record<string, { entry: string; mid: string; senior: string }> = {
+      "Project Manager": { entry: "$55-75K", mid: "$75-110K", senior: "$110-160K+" },
+      "Operations Analyst": { entry: "$50-70K", mid: "$70-100K", senior: "$100-140K+" },
+      "UX Designer": { entry: "$60-80K", mid: "$80-120K", senior: "$120-180K+" },
+      "Creative Director": { entry: "$45-65K", mid: "$90-130K", senior: "$130-200K+" },
+      "Product Designer": { entry: "$65-85K", mid: "$85-130K", senior: "$130-200K+" },
+      "Content Creator": { entry: "$30-50K", mid: "$50-100K", senior: "$100-500K+" },
+      "Team Coach": { entry: "$60-80K", mid: "$80-120K", senior: "$120-180K+" }
+    };
+
+    return compensation[careerTitle] || compensation["Project Manager"];
+  };
+
   return (
     <div className="min-h-screen bg-background">
       <div className="container mx-auto px-6 py-12">
@@ -137,65 +375,7 @@ const CareerDetail = () => {
                 <MapPin className="h-5 w-5 text-primary" />
                 Career Path Roadmap
               </h3>
-              <div className="grid md:grid-cols-3 gap-4">
-                <div className="p-4 rounded-lg bg-muted/30">
-                  <h4 className="font-medium text-sm mb-2 text-primary">Entry Level (0-2 years)</h4>
-                  <ul className="text-xs text-muted-foreground space-y-1">
-                    <li>• Build foundational skills</li>
-                    <li>• Learn industry tools</li>
-                    <li>• Work under supervision</li>
-                    <li>• Complete certification courses</li>
-                  </ul>
-                </div>
-                <div className="p-4 rounded-lg bg-muted/30">
-                  <h4 className="font-medium text-sm mb-2 text-primary">Mid-Level (3-7 years)</h4>
-                  <ul className="text-xs text-muted-foreground space-y-1">
-                    <li>• Take on complex projects</li>
-                    <li>• Mentor junior team members</li>
-                    <li>• Specialize in niche areas</li>
-                    <li>• Lead small teams</li>
-                  </ul>
-                </div>
-                <div className="p-4 rounded-lg bg-muted/30">
-                  <h4 className="font-medium text-sm mb-2 text-primary">Senior Level (8+ years)</h4>
-                  <ul className="text-xs text-muted-foreground space-y-1">
-                    <li>• Strategic decision making</li>
-                    <li>• Department leadership</li>
-                    <li>• Industry thought leadership</li>
-                    <li>• Cross-functional collaboration</li>
-                  </ul>
-                </div>
-              </div>
-            </Card>
-
-            {/* Day in the Life */}
-            <Card className="p-6">
-              <h3 className="text-xl font-semibold mb-4 flex items-center gap-2">
-                <Clock className="h-5 w-5 text-primary" />
-                A Day in the Life
-              </h3>
-              <div className="space-y-3">
-                <div className="flex gap-3 p-3 rounded-lg bg-muted/30">
-                  <span className="text-xs font-medium text-primary min-w-[60px]">9:00 AM</span>
-                  <span className="text-sm">Review project status and priorities for the day</span>
-                </div>
-                <div className="flex gap-3 p-3 rounded-lg bg-muted/30">
-                  <span className="text-xs font-medium text-primary min-w-[60px]">10:00 AM</span>
-                  <span className="text-sm">Team standup meeting and collaboration session</span>
-                </div>
-                <div className="flex gap-3 p-3 rounded-lg bg-muted/30">
-                  <span className="text-xs font-medium text-primary min-w-[60px]">11:30 AM</span>
-                  <span className="text-sm">Deep work on core {career.title.toLowerCase()} tasks</span>
-                </div>
-                <div className="flex gap-3 p-3 rounded-lg bg-muted/30">
-                  <span className="text-xs font-medium text-primary min-w-[60px]">2:00 PM</span>
-                  <span className="text-sm">Client/stakeholder meetings and feedback sessions</span>
-                </div>
-                <div className="flex gap-3 p-3 rounded-lg bg-muted/30">
-                  <span className="text-xs font-medium text-primary min-w-[60px]">4:00 PM</span>
-                  <span className="text-sm">Documentation, planning, and skill development</span>
-                </div>
-              </div>
+              {getCareerRoadmap(career.title)}
             </Card>
 
             {/* Industry Insights */}
@@ -260,15 +440,15 @@ const CareerDetail = () => {
               </h3>
               <div className="grid md:grid-cols-3 gap-4">
                 <div className="text-center p-4 rounded-lg bg-muted/30">
-                  <div className="text-2xl font-bold text-primary">$45-65K</div>
+                  <div className="text-2xl font-bold text-primary">{getCompensationData(career.title).entry}</div>
                   <div className="text-xs text-muted-foreground">Entry Level</div>
                 </div>
                 <div className="text-center p-4 rounded-lg bg-muted/30">
-                  <div className="text-2xl font-bold text-primary">$65-95K</div>
+                  <div className="text-2xl font-bold text-primary">{getCompensationData(career.title).mid}</div>
                   <div className="text-xs text-muted-foreground">Mid Level</div>
                 </div>
                 <div className="text-center p-4 rounded-lg bg-muted/30">
-                  <div className="text-2xl font-bold text-primary">$95-150K+</div>
+                  <div className="text-2xl font-bold text-primary">{getCompensationData(career.title).senior}</div>
                   <div className="text-xs text-muted-foreground">Senior Level</div>
                 </div>
               </div>
