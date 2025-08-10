@@ -309,85 +309,99 @@ const Results = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-gradient-to-br from-background via-muted/30 to-background">
       <div className="container mx-auto px-6 py-12">
         <div className="text-center mb-12">
           <div className="animate-float mb-6">
-            <Trophy className="h-16 w-16 text-primary mx-auto mb-4 animate-pulse-glow" />
+            <div className="bg-gradient-spark p-4 rounded-full shadow-glow animate-pulse-glow mx-auto w-fit">
+              <Trophy className="h-16 w-16 text-white" />
+            </div>
           </div>
           
-          <h1 className="text-4xl font-bold text-foreground mb-4">
+          <h1 className="text-5xl font-bold bg-gradient-spark bg-clip-text text-transparent mb-4">
             Your Career Spark Results
           </h1>
           
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Based on your answers, here are the careers that best match your work style and interests.
-          </p>
+          <div className="max-w-3xl mx-auto mb-8">
+            <p className="text-xl text-muted-foreground mb-4">
+              🎉 Congratulations! Your unique strengths have been analyzed.
+            </p>
+            <p className="text-lg text-muted-foreground">
+              Based on your answers, here are the careers that best match your work style and interests.
+            </p>
+          </div>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
           {recommendations.map((career, index) => (
             <Card 
-              key={career.title}
-              className="p-6 hover:shadow-lg transition-all duration-500 cursor-pointer group hover-scale animate-fade-in border-2 hover:border-primary/30 hover:bg-gradient-to-br hover:from-primary/5 hover:to-transparent"
+              key={career.title} 
+              className="group cursor-pointer transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-primary/20 border-2 hover:border-primary/50 bg-gradient-to-br from-card/90 to-card/60 backdrop-blur-sm animate-fade-in relative overflow-hidden"
               style={{ animationDelay: `${index * 150}ms` }}
               onClick={() => handleCareerClick(career)}
             >
-              <div className="flex items-start justify-between mb-4">
-                <div>
-                  <h3 className="text-xl font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">
-                    {career.title}
-                  </h3>
-                  <Badge variant="secondary" className="mb-2 group-hover:bg-primary/10 transition-colors">
-                    {career.category}
+              {/* Hover glow effect */}
+              <div className="absolute inset-0 bg-gradient-spark opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
+              
+              <div className="p-6 relative z-10">
+                <div className="flex items-center justify-between mb-4">
+                  <Badge 
+                    variant="secondary" 
+                    className="bg-gradient-spark text-white shadow-spark"
+                  >
+                    {career.match}% Match
                   </Badge>
+                  <div className="bg-primary/10 p-2 rounded-full group-hover:bg-primary/20 transition-colors">
+                    <Sparkles className="h-5 w-5 text-primary group-hover:animate-pulse" />
+                  </div>
                 </div>
-                <div className="flex items-center gap-1 bg-primary/10 px-2 py-1 rounded-full group-hover:bg-primary/20 transition-colors">
-                  <Star className="h-4 w-4 text-primary group-hover:animate-pulse" />
-                  <span className="text-sm font-medium text-primary">{career.match}%</span>
+                
+                <h3 className="text-2xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors">
+                  {career.title}
+                </h3>
+                
+                <p className="text-muted-foreground mb-4 line-clamp-3 leading-relaxed">
+                  {career.description}
+                </p>
+                
+                <div className="flex items-center justify-between">
+                  <Badge variant="outline" className="text-xs border-primary/30 text-primary/80">
+                    {career.category} Path
+                  </Badge>
+                  <div className="bg-primary/10 p-2 rounded-full group-hover:bg-primary/20 transition-all group-hover:scale-110">
+                    <ArrowRight className="h-4 w-4 text-primary group-hover:translate-x-1 transition-transform" />
+                  </div>
                 </div>
-              </div>
-              
-              <p className="text-muted-foreground mb-4 text-sm">
-                {career.description}
-              </p>
-              
-              <div className="mb-4">
-                <div className="flex flex-wrap gap-1">
-                  {career.skills.slice(0, 3).map((skill) => (
-                    <Badge key={skill} variant="outline" className="text-xs group-hover:border-primary/30 transition-colors">
-                      {skill}
-                    </Badge>
-                  ))}
-                  {career.skills.length > 3 && (
-                    <Badge variant="outline" className="text-xs group-hover:border-primary/30 transition-colors">
-                      +{career.skills.length - 3}
-                    </Badge>
-                  )}
-                </div>
-              </div>
-              
-              <div className="flex items-center justify-between">
-                <span className="text-xs text-muted-foreground">
-                  Click to learn more
-                </span>
-                <ArrowRight className="h-4 w-4 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all" />
               </div>
             </Card>
           ))}
         </div>
 
-        <div className="text-center mt-12">
-          <p className="text-sm text-muted-foreground mb-4">
-            Want deeper insights and more career options?
-          </p>
-          <Button variant="outline" className="mr-4">
-            <Sparkles className="h-4 w-4 mr-2" />
-            Upgrade to Premium
-          </Button>
-          <Button variant="ghost" onClick={() => navigate("/")}>
-            Take Quiz Again
-          </Button>
+        <div className="text-center mt-20">
+          <div className="bg-gradient-secondary p-10 rounded-3xl shadow-glow max-w-4xl mx-auto relative overflow-hidden">
+            {/* Background decoration */}
+            <div className="absolute top-4 left-4 w-12 h-12 bg-white/10 rounded-full"></div>
+            <div className="absolute bottom-4 right-4 w-16 h-16 bg-white/10 rounded-full"></div>
+            <div className="absolute top-1/2 right-8 w-8 h-8 bg-white/15 rounded-full"></div>
+            
+            <div className="relative z-10">
+              <h2 className="text-3xl font-bold text-white mb-6">
+                🚀 Ready to Launch Your Dream Career?
+              </h2>
+              <p className="text-xl text-white/95 mb-8 max-w-2xl mx-auto leading-relaxed">
+                Each career path comes with verified resources, detailed roadmaps, and expert insights. 
+                Your spark is unique — let's turn it into your success story.
+              </p>
+              <div className="flex flex-wrap justify-center gap-4">
+                <div className="bg-white/20 px-8 py-4 rounded-full backdrop-blur-sm">
+                  <span className="text-white font-semibold">✨ Free Resources Available ✨</span>
+                </div>
+                <div className="bg-white/20 px-8 py-4 rounded-full backdrop-blur-sm">
+                  <span className="text-white font-semibold">🎯 Personalized Roadmaps 🎯</span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

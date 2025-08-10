@@ -268,8 +268,8 @@ const CareerDetail = () => {
       <div className="container mx-auto px-6 py-12">
         <Button 
           variant="ghost" 
-          onClick={() => navigate("/results", { state: { answers: location.state?.answers } })}
-          className="mb-8"
+          onClick={() => navigate(-1)}
+          className="mb-8 hover:bg-primary/10 transition-smooth"
         >
           <ArrowLeft className="h-4 w-4 mr-2" />
           Back to Results
@@ -336,26 +336,26 @@ const CareerDetail = () => {
                     const urlMap: Record<string, string> = {
                       "PMP Certification Guide (Free)": "https://www.pmi.org/certifications/project-management-pmp",
                       "Agile Project Management Course": "https://www.coursera.org/learn/agile-project-management",
-                      "Microsoft Project Tutorial Series": "https://www.youtube.com/results?search_query=microsoft+project+tutorial",
-                      "Harvard Business Review PM Articles": "https://hbr.org/topic/project-management",
-                      "SQL for Data Analysis Course": "https://www.codecademy.com/learn/sql",
-                      "Lean Six Sigma Yellow Belt": "https://www.sixsigmacouncil.org/six-sigma-yellow-belt/",
-                      "Excel Data Analysis Toolkit": "https://support.microsoft.com/en-us/office/analyze-data-in-excel-3223aab8-f543-4fda-85ed-76bb0295ffc4",
-                      "Business Process Mapping Guide": "https://www.lucidchart.com/pages/business-process-mapping",
+                      "Microsoft Project Tutorial Series": "https://www.youtube.com/playlist?list=PLzj2tZN9lfk-0JCEdH2hP4jdP4k8TbQpj",
+                      "Harvard Business Review PM Articles": "https://hbr.org/topic/subject/project-management",
+                      "SQL for Data Analysis Course": "https://www.khanacademy.org/computing/intro-to-sql",
+                      "Lean Six Sigma Yellow Belt": "https://www.coursera.org/learn/six-sigma-yellow-belt",
+                      "Excel Data Analysis Toolkit": "https://www.excel-university.com/free-excel-training/",
+                      "Business Process Mapping Guide": "https://blog.processstreet.com/business-process-mapping/",
                       "Google UX Design Certificate": "https://www.coursera.org/professional-certificates/google-ux-design",
-                      "Figma Design System Tutorial": "https://www.figma.com/resource-library/design-systems/",
+                      "Figma Design System Tutorial": "https://www.figma.com/best-practices/design-systems-guide/",
                       "UX Research Methods Handbook": "https://www.nngroup.com/articles/which-ux-research-methods/",
                       "Design Thinking Workshop Kit": "https://www.ideou.com/pages/design-thinking",
-                      "Brand Strategy Masterclass": "https://www.futurelearn.com/courses/brand-strategy",
-                      "Adobe Creative Suite Tutorials": "https://helpx.adobe.com/creative-suite.html",
-                      "Creative Leadership Podcast": "https://podcasts.apple.com/us/podcast/creative-pep-talk/id923555467",
-                      "Design Inspiration Gallery": "https://www.behance.net/",
-                      "Product Design Sprint Guide": "https://www.gv.com/sprint/",
-                      "User Testing Platform Access": "https://www.usertesting.com/",
-                      "Product Design Case Studies": "https://uxplanet.org/",
-                      "Wireframing Templates": "https://www.figma.com/templates/",
-                      "Content Strategy Playbook": "https://contentmarketinginstitute.com/",
-                      "Video Editing Crash Course": "https://www.blackmagicdesign.com/products/davinciresolve/",
+                      "Brand Strategy Masterclass": "https://blog.hubspot.com/marketing/branding-strategy-guide",
+                      "Adobe Creative Suite Tutorials": "https://helpx.adobe.com/support.html",
+                      "Creative Leadership Podcast": "https://thefutur.com/podcasts",
+                      "Design Inspiration Gallery": "https://dribbble.com/",
+                      "Product Design Sprint Guide": "https://designsprintkit.withgoogle.com/",
+                      "User Testing Platform Access": "https://maze.co/",
+                      "Product Design Case Studies": "https://medium.com/design-case-studies",
+                      "Wireframing Templates": "https://whimsical.com/templates/",
+                      "Content Strategy Playbook": "https://blog.hubspot.com/marketing/content-strategy",
+                      "Video Editing Crash Course": "https://www.openshot.org/learn/",
                       "SEO Content Optimization": "https://moz.com/beginners-guide-to-seo",
                       "Creator Economy Newsletter": "https://creatoreconomy.so/",
                       "Team Coaching Certification": "https://coachfederation.org/",
