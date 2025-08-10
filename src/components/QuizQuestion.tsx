@@ -34,24 +34,6 @@ export const QuizQuestionComponent = ({
 
   return (
     <div className="max-w-4xl mx-auto p-6">
-      {/* Progress Bar */}
-      <div className="mb-8">
-        <div className="flex items-center justify-between mb-2">
-          <span className="text-sm font-medium text-muted-foreground">
-            Question {questionNumber} of {totalQuestions}
-          </span>
-          <span className="text-sm font-medium text-primary">
-            {Math.round((questionNumber / totalQuestions) * 100)}%
-          </span>
-        </div>
-        <div className="w-full bg-muted rounded-full h-2">
-          <div 
-            className="gradient-spark h-2 rounded-full transition-all duration-300"
-            style={{ width: `${(questionNumber / totalQuestions) * 100}%` }}
-          />
-        </div>
-      </div>
-
       {/* Question */}
       <Card className="mb-8 p-8 shadow-spark border-2">
         <div className="flex items-start gap-4">
