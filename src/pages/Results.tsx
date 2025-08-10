@@ -309,9 +309,9 @@ const Results = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-muted/30 to-background">
+    <div className="min-h-screen gradient-results">
       <div className="container mx-auto px-6 py-12">
-        <div className="text-center mb-12">
+        <div className="text-center mb-12 animate-scale-up">
           <div className="animate-float mb-6">
             <div className="bg-gradient-spark p-4 rounded-full shadow-glow animate-pulse-glow mx-auto w-fit">
               <Trophy className="h-16 w-16 text-white" />
@@ -323,10 +323,10 @@ const Results = () => {
           </h1>
           
           <div className="max-w-3xl mx-auto mb-8">
-            <p className="text-xl text-muted-foreground mb-4">
+            <p className="text-xl text-foreground/80 mb-4">
               🎉 Congratulations! Your unique strengths have been analyzed.
             </p>
-            <p className="text-lg text-muted-foreground">
+            <p className="text-lg text-foreground/70">
               Based on your answers, here are the careers that best match your work style and interests.
             </p>
           </div>
@@ -336,18 +336,18 @@ const Results = () => {
           {recommendations.map((career, index) => (
             <Card 
               key={career.title} 
-              className="group cursor-pointer transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-primary/20 border-2 hover:border-primary/50 bg-gradient-to-br from-card/90 to-card/60 backdrop-blur-sm animate-fade-in relative overflow-hidden"
+              className="group cursor-pointer transition-all duration-500 hover:scale-105 hover:shadow-glow border-2 border-border/50 bg-card/90 backdrop-blur-sm animate-slide-up relative overflow-hidden hover:border-primary/30"
               style={{ animationDelay: `${index * 150}ms` }}
               onClick={() => handleCareerClick(career)}
             >
               {/* Hover glow effect */}
-              <div className="absolute inset-0 bg-gradient-spark opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
+              <div className="absolute inset-0 bg-gradient-spark opacity-0 group-hover:opacity-5 transition-opacity duration-300"></div>
               
               <div className="p-6 relative z-10">
                 <div className="flex items-center justify-between mb-4">
                   <Badge 
                     variant="secondary" 
-                    className="bg-gradient-spark text-white shadow-spark"
+                    className="bg-gradient-spark text-white shadow-spark border-none px-3 py-1"
                   >
                     {career.match}% Match
                   </Badge>
@@ -360,12 +360,12 @@ const Results = () => {
                   {career.title}
                 </h3>
                 
-                <p className="text-muted-foreground mb-4 line-clamp-3 leading-relaxed">
+                <p className="text-foreground/70 mb-4 line-clamp-3 leading-relaxed">
                   {career.description}
                 </p>
                 
                 <div className="flex items-center justify-between">
-                  <Badge variant="outline" className="text-xs border-primary/30 text-primary/80">
+                  <Badge variant="outline" className="text-xs border-primary/30 text-primary/80 bg-primary/5">
                     {career.category} Path
                   </Badge>
                   <div className="bg-primary/10 p-2 rounded-full group-hover:bg-primary/20 transition-all group-hover:scale-110">
